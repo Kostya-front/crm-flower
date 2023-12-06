@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+li {
+  list-style: none;
+}
+
 .content {
   display: grid;
   grid-template-columns: 20% 80%;

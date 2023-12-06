@@ -1,36 +1,34 @@
 <template>
   <form @submit.prevent="onSubmit" class="form">
-    <div class="input-group">
-      <div class="form-floating">
-        <input v-model="title" type="text" class="form-control" id="floatingInputGroup1" placeholder="Введите название категории...">
-        <label for="floatingInputGroup1">Категория</label>
-      </div>
-    </div>
+<!--    <div class="input-group">-->
+<!--      <div class="form-floating">-->
+<!--        <input v-model="title" type="text" class="form-control" id="floatingInputGroup1" placeholder="Введите название категории...">-->
+<!--        <label for="floatingInputGroup1">Категория</label>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <div class="input-group">
-      <div class="form-floating">
-        <input v-model="url" type="text" class="form-control" id="floatingInputGroup1" placeholder="Введите url картинки...">
-        <label for="floatingInputGroup1">Url картинки</label>
-      </div>
-    </div>
+<!--    <div class="input-group">-->
+<!--      <div class="form-floating">-->
+<!--        <input v-model="url" type="text" class="form-control" id="floatingInputGroup1" placeholder="Введите url картинки...">-->
+<!--        <label for="floatingInputGroup1">Url картинки</label>-->
+<!--      </div>-->
+<!--    </div>-->
 
+    <MainInput v-model="categoriesStore.newCategory.title" />
+    <MainInput v-model="categoriesStore.newCategory.urlImage" />
     <button class="btn btn-primary">Создать</button>
   </form>
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
 import {useCategoriesStore} from "@/features/categories/store/categoriesStore";
-
-const title = ref('')
-const url = ref('')
+import MainInput from '@/shared/ui/MainInput/MainInput'
 
 const categoriesStore = useCategoriesStore()
 
 function onSubmit() {
-    categoriesStore.addCategory({id: 5, title:title.value, url: url.value})
+  categoriesStore.addCategory()
 }
-
 </script>
 
 <style scoped>
