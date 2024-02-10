@@ -8,6 +8,14 @@
       <li class="list__item">
         <router-link class="aside__link" to="/categories">Категории</router-link>
       </li>
+
+      <li class="list__item">
+        <router-link class="aside__link" to="/advantages">Преимущества</router-link>
+      </li>
+
+      <li class="list__item">
+        <router-link class="aside__link" to="/contacts">Контакты</router-link>
+      </li>
     </ul>
   </aside>
 </template>

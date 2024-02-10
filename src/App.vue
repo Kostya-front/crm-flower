@@ -49,6 +49,7 @@ li {
 </style>
 
 <script setup lang="ts">
-import Header from '@/widgets/Header/Header'
-import Aside from '@/widgets/Aside/Aside'
+import Header from '@/widgets/Header/Header.vue'
+import Aside from '@/widgets/Aside/Aside.vue'
+import ShowMessage from './features/ShowMessage.vue';
 </script>

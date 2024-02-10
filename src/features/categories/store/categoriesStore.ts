@@ -12,7 +12,14 @@ export const useCategoriesStore = defineStore('categories', () => {
     title: '',
     urlImage: ''
   })
-  let errors = reactive<string []>([])
+
+  const updatingCategory = reactive({id:0, title: '', urlImage: ''})
+
+
+
+
+
+  let errors = ref<string []>([])
 
   async function getCategories() {
     try {
@@ -30,7 +37,8 @@ export const useCategoriesStore = defineStore('categories', () => {
       newCategory.title = ''
       newCategory.urlImage = ''
     } catch (e: AxiosError | any) {
-      errors = JSON.parse(e.message)
+      console.log(JSON.parse(e.response?.data))
+      errors.value = [...JSON.parse(e.response?.data)]
     }
   }
 
@@ -43,12 +51,45 @@ export const useCategoriesStore = defineStore('categories', () => {
     }
   }
 
+  async function editCategory(id: number) {
+    try {
+      const {data} = await instance.patch<ICategory>(`/categories/${id}`, updatingCategory)
+
+      // categories.value = categories.value.map((category) => {
+      //   if(category.id === id) {
+      //     category.title = data.title
+      //     category.urlImage = data.urlImage
+      //   }
+      //   return category
+      // })
+
+      const foundCategory = categories.value.find((category) => category.id === id)
+
+      if(foundCategory) {
+        foundCategory.title = data.title
+        foundCategory.urlImage = data.urlImage
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  function selectCategory(category: ICategory) {
+    updatingCategory.id = category.id
+    updatingCategory.title = category.title
+    updatingCategory.urlImage = category.urlImage
+  }
+
   return {
     categories,
     newCategory,
     addCategory,
     getCategories,
-    deleteCategory
+    deleteCategory,
+    updatingCategory,
+    editCategory,
+    selectCategory,
+    errors
   }
 })
 

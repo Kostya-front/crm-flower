@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import {useCategoriesStore} from "@/features/categories/store/categoriesStore";
-import MainInput from '@/shared/ui/MainInput/MainInput'
+import MainInput from '@/shared/ui/MainInput/MainInput.vue'
 
 const categoriesStore = useCategoriesStore()
 
