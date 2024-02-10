@@ -2,8 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
-//@ts-ignore
-import {mask} from 'vue-the-mask'
+
 const pinia = createPinia()
 
-createApp(App).use(router).use(pinia).directive('mask', mask).mount('#app')
+createApp(App).use(router).use(pinia).mount('#app')

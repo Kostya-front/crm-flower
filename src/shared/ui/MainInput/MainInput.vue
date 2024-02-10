@@ -1,5 +1,5 @@
 <template>
-  <input v-clear="() =>  emit('update:modelValue', '')" :value="modelValue" @input="($event) => onInput($event)" class="form-control" type="text" v-mask="'##/##/####'" >
+  <input v-clear="() =>  emit('update:modelValue', '')" :value="modelValue" @input="($event) => onInput($event)" class="form-control" type="text" >
 </template>
 
 <script setup lang="ts">
